@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.21" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\" />
-    <Folder Include="Models\DAL\" />
-    <Folder Include="Models\EN\" />
+    <ProjectReference Include="..\GSMC20240906.DTOs\GSMC20240906.DTOs.csproj" />
   </ItemGroup>
 
 </Project>
