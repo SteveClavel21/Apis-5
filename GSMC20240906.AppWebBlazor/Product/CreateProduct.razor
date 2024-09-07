@@ -1,0 +1,102 @@
+﻿@page "/create-product"
+
+@using GSMC20240906.DTOs.ProductsDTOs;
+@using Microsoft.AspNetCore.Components.Forms;
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Components;
+@using GSMC20240906.AppWebBlazor.Data;
+
+@if (isSuccess == false && isError == false)
+{
+    <h3>Crear Nuevo Producto</h3>
+
+    <EditForm Model="product" OnValidSubmit="Create">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Name">Nombre:</label>
+                    <InputText class="form-control" id="Name" @bind-Value="product.NombreGSMC" />
+                    <ValidationMessage For="() => product.NombreGSMC" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Descripcion">Descripción:</label>
+                    <InputTextArea class="form-control" id="Descripcion" @bind-Value="product.DescripcionGSMC" />
+                    <ValidationMessage For="() => product.DescripcionGSMC" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Precio">Precio:</label>
+                    <InputNumber class="form-control" id="Precio" @bind-Value="product.PrecioGSMC" />
+                    <ValidationMessage For="() => product.PrecioGSMC" />
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <NavLink href="/product-list" class="btn btn-secondary">Cancelar</NavLink>
+            </div>
+        </div>
+    </EditForm>
+}
+else if (isError)
+{
+    product = new CreateProductGSMCDTO();
+    isError = false;
+    <p class="alert alert-success">Producto creado con éxito.</p>
+    <button type="button" @onclick="GoCreate" class="btn btn-primary">Ir a crear</button>
+    <NavLink href="/product-list" class="btn btn-primary">Ir a buscar productos</NavLink>
+}
+else if (isSuccess)
+{
+    <p class="alert alert-danger">Ocurrió un error al intentar registrar el producto.</p>
+    <NavLink href="/product-list" class="btn btn-primary">Aceptar</NavLink>
+}
+
+@code {
+    // Inject the ProductService to interact with product data
+    [Inject]
+    ProductGSMCService productService { get; set; }
+
+    // Create an instance of CreateProductGSMCDTO for new product creation
+    CreateProductGSMCDTO product = new CreateProductGSMCDTO();
+    bool isSuccess = false;  // Flag for successful creation
+    bool isError = false;   // Flag for creation errors
+
+    private async Task Create()
+    {
+        try
+        {
+            var result = await productService.Create(product);
+            Console.WriteLine($"Result from Create: {result}"); // Depuración
+            if (result > 0)  // Considera el resultado positivo para éxito
+            {
+                isSuccess = true;
+            }
+            else
+            {
+                isError = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejo de excepciones para detectar problemas inesperados
+            Console.WriteLine($"Exception: {ex.Message}");
+            isError = true;
+        }
+    }
+
+
+    private void GoCreate()
+    {
+        isSuccess = false;  // Reset isSuccess for new creation
+        isError = false;   // Reset isError for clean state
+    }
+}

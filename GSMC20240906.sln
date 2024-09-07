@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSMC20240906.DTOs", "GSMC20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSMC20240906.AppWebMVC", "GSMC20240906.AppWebMVC\GSMC20240906.AppWebMVC.csproj", "{2DB057AC-E20E-4667-9DBE-69A81B3A1E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSMC20240906.AppWebBlazor", "GSMC20240906.AppWebBlazor\GSMC20240906.AppWebBlazor.csproj", "{A46559F8-D706-4814-86FC-38F374C13EB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2DB057AC-E20E-4667-9DBE-69A81B3A1E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DB057AC-E20E-4667-9DBE-69A81B3A1E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DB057AC-E20E-4667-9DBE-69A81B3A1E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A46559F8-D706-4814-86FC-38F374C13EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A46559F8-D706-4814-86FC-38F374C13EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A46559F8-D706-4814-86FC-38F374C13EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A46559F8-D706-4814-86FC-38F374C13EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
